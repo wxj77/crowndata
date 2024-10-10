@@ -1,0 +1,29 @@
+{
+  "dataName": "iliad_00000000",
+  "startTime": "20230611T155237.000Z",
+  "endTime": "20230611T155715.000Z",
+  "robotEmbodiment": "DROID",
+  "robotSerialNumber": "DROID123456",
+  "videoSamplingRate": 10,
+  "armSamplingRate": 10,
+  "sensorSamplingRate": 10,
+  "operatorName": "John Doe",
+  "taskDescription": "Move object to a new position and orientation (ex: grasping, relocating, flipping)",
+  "subtaskDescription": "Move object to a new position and orientation (ex: grasping, relocating, flipping)",
+  "taskState": "SUCCESS",
+  "subtaskState": "SUCCESS",
+  "dataLength": 278,
+  "durationInSeconds": "27.80",
+  "cameras": [
+    "ext1_left",
+    "ext1_right",
+    "ext2_left",
+    "ext2_right",
+    "wrist_left",
+    "wrist_right"
+  ],
+  "joints": [
+    "cartesian_position"
+  ],
+  "dataSource": "https://droid-dataset.github.io/droid/the-droid-dataset"
+}

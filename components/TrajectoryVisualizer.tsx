@@ -3,9 +3,11 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { useTrajectoryData } from "@/hooks/useTrajectoryData";
 import { useJointPositionData } from "@/hooks/useJointPositionData";
+import { usePointsData } from "@/hooks/usePointsData";
 import { SharedState } from "@/types/pageInterface";
 import TrajectoryLine from "@/components/TrajectoryLine";
 import CameraSetup from "@/components/CameraSetup";
+import PointsCloud from "@/components/PointsCloud";
 import TrajectoryDeviceOrientationAnimation from "@/components/TrajectoryDeviceOrientationAnimation";
 import TrajectoryDeviceGeometryAnimation from "@/components/TrajectoryDeviceGeometryAnimation";
 import { useInfoData } from "@/hooks/useInfoData";
@@ -28,6 +30,12 @@ const TrajectoryVisualizer: React.FC<TrajectoryVisualizerProps> = ({
   // Use the custom hook
   const trajectoryDataArray = useTrajectoryData(folderName, joints);
   const jointPositionDataArray = useJointPositionData(folderName);
+  const pointsArray = usePointsData(folderName);
+
+  if (!pointsArray) {
+    console.error("Points array is null or undefined");
+    return;
+  }
 
   return (
     <>
@@ -79,6 +87,12 @@ const TrajectoryVisualizer: React.FC<TrajectoryVisualizerProps> = ({
           <TrajectoryDeviceGeometryAnimation
             sharedState={sharedState}
             joints={jointPositionDataArray.joints}
+          />
+
+          {/* Render Depth Cloud */}
+          <PointsCloud
+            sharedState={sharedState}
+            positions={pointsArray.positions}
           />
         </Canvas>
       </div>
